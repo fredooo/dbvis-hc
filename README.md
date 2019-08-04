@@ -1,6 +1,6 @@
 # dbvis-hc
 
-A TypeScript implementation a hierarchical clustering algorithm.
+A TypeScript implementation of a hierarchical clustering algorithm.
 
 ### Install
 
@@ -10,7 +10,7 @@ Install with `npm`:
 npm install --save dbvis-hc
 ```
 
-This package requires module resoultion by Node in `tsconfig.json`:
+This package requires module resolution by Node in `tsconfig.json`:
 
 ```json
 "compilerOptions": {
