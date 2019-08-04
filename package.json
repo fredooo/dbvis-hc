@@ -1,7 +1,7 @@
 {
   "name": "dbvis-hc",
-  "version": "1.0.0",
-  "description": "Algorithm for hierarchical clustering",
+  "version": "1.0.1",
+  "description": "A TypeScript implementation AGNES a agglomerative hierarchical clustering algorithm",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -16,9 +16,11 @@
     "url": "git+https://github.com/fredooo/dbvis-hc.git"
   },
   "keywords": [
-    "hierachical",
+    "hierarchical",
+    "agglomerative",
     "clustering",
-    "algorithm"
+    "algorithm",
+    "AGNES"
   ],
   "author": "Frederik Dennig",
   "license": "MIT",
