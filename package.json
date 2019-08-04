@@ -1,0 +1,31 @@
+{
+  "name": "dbvis-hc",
+  "version": "1.0.0",
+  "description": "Algorithm for hierarchical clustering",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "prepare": "npm run test && npm run build",
+    "clean": "rm -r dist"
+  },
+  "files": [ "dist/**" ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fredooo/dbvis-hc.git"
+  },
+  "keywords": [
+    "hierachical",
+    "clustering",
+    "algorithm"
+  ],
+  "author": "Frederik Dennig",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^24.0.16",
+    "jest": "^24.8.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.3"
+  }
+}
