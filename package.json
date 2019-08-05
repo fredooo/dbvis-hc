@@ -1,16 +1,20 @@
 {
   "name": "dbvis-hc",
-  "version": "1.0.1",
-  "description": "A TypeScript implementation AGNES a agglomerative hierarchical clustering algorithm",
+  "version": "1.0.2",
+  "description": "A TypeScript implementation of AGNES an agglomerative hierarchical clustering algorithm",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "lint": "eslint src test --ext .ts",
+    "lint:fix": "eslint src test --ext .ts --fix",
     "test": "jest",
     "build": "tsc",
-    "prepare": "npm run test && npm run build",
+    "prepare": "npm run lint && npm run test && npm run build",
     "clean": "rm -r dist"
   },
-  "files": [ "dist/**" ],
+  "files": [
+    "dist/**"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fredooo/dbvis-hc.git"
@@ -26,7 +30,13 @@
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^24.0.16",
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^1.13.0",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
     "jest": "^24.8.0",
+    "prettier": "^1.18.2",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.3"
   }

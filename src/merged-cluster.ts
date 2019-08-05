@@ -1,15 +1,11 @@
-import { AbstractCluster } from './abstract-cluster'
+import { AbstractCluster } from './abstract-cluster';
 
 export class MergedCluster<T> extends AbstractCluster<T> {
-    
     public leftChild: AbstractCluster<T>;
     public rightChild: AbstractCluster<T>;
     public distance: number;
 
-    public constructor(id: number,
-                       leftChild: AbstractCluster<T>,
-                       rightChild: AbstractCluster<T>,
-                       distance: number) {
+    public constructor(id: number, leftChild: AbstractCluster<T>, rightChild: AbstractCluster<T>, distance: number) {
         super(id);
         this.leftChild = leftChild;
         this.rightChild = rightChild;
@@ -27,5 +23,4 @@ export class MergedCluster<T> extends AbstractCluster<T> {
     public size(): number {
         return this.leftChild.size() + this.rightChild.size();
     }
-
 }

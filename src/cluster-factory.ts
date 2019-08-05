@@ -3,10 +3,9 @@ import { LeafCluster } from './leaf-cluster';
 import { MergedCluster } from './merged-cluster';
 
 export class ClusterFactory<T> {
-
     private idCounter: number;
 
-    constructor() {
+    public constructor() {
         this.idCounter = 0;
     }
 
@@ -17,5 +16,4 @@ export class ClusterFactory<T> {
     public createMergedCluster(c1: AbstractCluster<T>, c2: AbstractCluster<T>, distance: number): MergedCluster<T> {
         return new MergedCluster(this.idCounter++, c1, c2, distance);
     }
-
 }

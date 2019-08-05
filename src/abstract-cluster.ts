@@ -1,5 +1,4 @@
 export abstract class AbstractCluster<T> {
-
     public id: number;
 
     public constructor(id: number) {
@@ -11,5 +10,4 @@ export abstract class AbstractCluster<T> {
     public abstract clusterElements(): T[];
 
     public abstract size(): number;
-
 }
