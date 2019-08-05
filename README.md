@@ -1,4 +1,7 @@
-# dbvis-hc
+dbvis-hc
+========
+
+[![Build Status](https://travis-ci.org/fredooo/dbvis-hc.svg?branch=master)](https://travis-ci.org/fredooo/dbvis-hc) [![npm version](https://badge.fury.io/js/dbvis-hc.svg)](https://badge.fury.io/js/dbvis-hc)
 
 A TypeScript implementation of [AGNES][1] an agglomerative hierarchical clustering algorithm.
 
