@@ -5,6 +5,10 @@ export class MergedCluster<T> extends AbstractCluster<T> {
     public rightChild: AbstractCluster<T>;
     public distance: number;
 
+    private _clusterElementIds: number[] | undefined;
+    private _clusterElements: T[] | undefined;
+    private _size: number | undefined;
+
     public constructor(id: number, leftChild: AbstractCluster<T>, rightChild: AbstractCluster<T>, distance: number) {
         super(id);
         this.leftChild = leftChild;
@@ -13,14 +17,26 @@ export class MergedCluster<T> extends AbstractCluster<T> {
     }
 
     public clusterElementIds(): number[] {
-        return this.leftChild.clusterElementIds().concat(this.rightChild.clusterElementIds());
+        if (!this._clusterElementIds) {
+            console.log('HIT');
+            this._clusterElementIds = this.leftChild.clusterElementIds().concat(this.rightChild.clusterElementIds());
+        }
+        return this._clusterElementIds;
     }
 
     public clusterElements(): T[] {
-        return this.leftChild.clusterElements().concat(this.rightChild.clusterElements());
+        if (!this._clusterElements) {
+            console.log('HIT');
+            this._clusterElements = this.leftChild.clusterElements().concat(this.rightChild.clusterElements());
+        }
+        return this._clusterElements;
     }
 
     public size(): number {
-        return this.leftChild.size() + this.rightChild.size();
+        if (!this._size) {
+            console.log('HIT');
+            this._size = this.leftChild.size() + this.rightChild.size();
+        }
+        return this._size;
     }
 }

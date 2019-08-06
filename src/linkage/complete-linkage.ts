@@ -8,11 +8,11 @@ export class CompleteLinkage<T> extends AbstractLinkage<T> {
 
     public calculate(c1: AbstractCluster<T>, c2: AbstractCluster<T>): number {
         let result = 0;
-        c1.clusterElements().forEach(e1 => {
-            c2.clusterElements().forEach(e2 => {
+        for (const e1 of c1.clusterElements()) {
+            for (const e2 of c2.clusterElements()) {
                 result = Math.max(result, this.distanceFunc(e1, e2));
-            });
-        });
+            }
+        }
         return result;
     }
 }

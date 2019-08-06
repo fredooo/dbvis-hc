@@ -3,7 +3,7 @@ import { ClusterFactory } from './cluster-factory';
 import { AbstractLinkage } from './linkage/abstract-linkage';
 
 export class HierarchicalClustering<T> {
-    public clusters: AbstractCluster<T>[];
+    private clusters: AbstractCluster<T>[];
     private objects: T[];
     private linkage: AbstractLinkage<T>;
     private clusterFactory: ClusterFactory<T>;
@@ -20,18 +20,23 @@ export class HierarchicalClustering<T> {
 
     public cluster(): AbstractCluster<T> {
         while (this.clusters.length > 1) {
+            // Merge cluster with lowest distance
             this.linkageValues.sort((e1, e2) => e1.value - e2.value);
             const { c1, c2, value } = this.linkageValues[0];
             const merged = this.clusterFactory.createMergedCluster(c1, c2, value);
+
+            // Remove merged cluster from the cluster and linkage values list
             this.clusters = this.clusters.filter(e => !(e.id === c1.id || e.id === c2.id));
             this.linkageValues = this.linkageValues.filter(
                 e => !(e.c1.id === c1.id || e.c1.id === c2.id || e.c2.id === c1.id || e.c2.id === c2.id)
             );
-            this.clusters.forEach(c => {
+
+            // Calculate and store distances to the merged cluster
+            this.clusters.forEach(cluster => {
                 this.linkageValues.push({
-                    c1: c,
+                    c1: cluster,
                     c2: merged,
-                    value: this.linkage.calculate(c, merged),
+                    value: this.linkage.calculate(cluster, merged),
                 });
             });
             this.clusters.push(merged);
@@ -41,22 +46,11 @@ export class HierarchicalClustering<T> {
 
     private initializeLinkageValues(): void {
         for (let i = 0; i < this.clusters.length; i++) {
-            for (let j = 0; j < this.clusters.length; j++) {
-                if (i === j) {
-                    continue;
-                }
+            for (let j = i + 1; j < this.clusters.length; j++) {
                 const c1 = this.clusters[i];
                 const c2 = this.clusters[j];
-                const existing = this.linkageValues.find(
-                    e => (e.c1.id === c1.id && e.c2.id === c2.id) || (e.c1.id === c2.id && e.c2.id === c1.id)
-                );
-                if (!existing) {
-                    this.linkageValues.push({
-                        c1,
-                        c2,
-                        value: this.linkage.calculate(c1, c2),
-                    });
-                }
+                const value = this.linkage.calculate(c1, c2);
+                this.linkageValues.push({ c1, c2, value });
             }
         }
     }

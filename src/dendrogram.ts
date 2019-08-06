@@ -5,6 +5,7 @@ import { MergedCluster } from './merged-cluster';
 export class Dendrogram<T> {
     public cluster: AbstractCluster<T>;
     public cutOffValue: number;
+
     private groups: number[][];
 
     public constructor(cluster: AbstractCluster<T>, cutOffValue: number) {
@@ -22,16 +23,12 @@ export class Dendrogram<T> {
         if (curr instanceof LeafCluster) {
             this.groups.push([curr.id]);
         } else {
-            const merged: MergedCluster<T> = curr as MergedCluster<T>;
-            if (merged.distance <= this.cutOffValue) {
+            const merged = curr as MergedCluster<T>;
+            if (merged.distance < this.cutOffValue) {
                 this.groups.push(curr.clusterElementIds());
             } else {
-                if (merged.leftChild) {
-                    this.extractClustersRecursively(merged.leftChild);
-                }
-                if (merged.rightChild) {
-                    this.extractClustersRecursively(merged.rightChild);
-                }
+                this.extractClustersRecursively(merged.leftChild);
+                this.extractClustersRecursively(merged.rightChild);
             }
         }
     }
