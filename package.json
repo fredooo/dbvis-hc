@@ -10,7 +10,7 @@
     "test": "jest",
     "build": "tsc",
     "prepare": "npm run lint && npm run test && npm run build",
-    "clean": "rm -r dist"
+    "clean": "rm -r dist; rm dbvis-hc-*.tgz; echo 'done'"
   },
   "files": [
     "dist/**"

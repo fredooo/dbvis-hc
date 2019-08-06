@@ -10,5 +10,5 @@
     "moduleResolution": "node"
   },
   "include": [ "src" ],
-  "exculde": [ "node_modules", "**/__tests__/*" ]
+  "exculde": [ "node_modules", "test" ]
 }
