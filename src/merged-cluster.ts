@@ -18,7 +18,6 @@ export class MergedCluster<T> extends AbstractCluster<T> {
 
     public clusterElementIds(): number[] {
         if (!this._clusterElementIds) {
-            console.log('HIT');
             this._clusterElementIds = this.leftChild.clusterElementIds().concat(this.rightChild.clusterElementIds());
         }
         return this._clusterElementIds;
@@ -26,7 +25,6 @@ export class MergedCluster<T> extends AbstractCluster<T> {
 
     public clusterElements(): T[] {
         if (!this._clusterElements) {
-            console.log('HIT');
             this._clusterElements = this.leftChild.clusterElements().concat(this.rightChild.clusterElements());
         }
         return this._clusterElements;
@@ -34,7 +32,6 @@ export class MergedCluster<T> extends AbstractCluster<T> {
 
     public size(): number {
         if (!this._size) {
-            console.log('HIT');
             this._size = this.leftChild.size() + this.rightChild.size();
         }
         return this._size;
