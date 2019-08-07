@@ -8,15 +8,7 @@ export class LeafCluster<T> extends AbstractCluster<T> {
         this.object = object;
     }
 
-    public clusterElementIds(): number[] {
-        return [this.id];
-    }
-
-    public clusterElements(): T[] {
-        return [this.object];
-    }
-
-    public size(): number {
-        return 1;
+    public leafClusters(): LeafCluster<T>[] {
+        return [this];
     }
 }

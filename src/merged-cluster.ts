@@ -1,13 +1,12 @@
 import { AbstractCluster } from './abstract-cluster';
+import { LeafCluster } from './leaf-cluster';
 
 export class MergedCluster<T> extends AbstractCluster<T> {
     public leftChild: AbstractCluster<T>;
     public rightChild: AbstractCluster<T>;
     public distance: number;
 
-    private _clusterElementIds: number[] | undefined;
-    private _clusterElements: T[] | undefined;
-    private _size: number | undefined;
+    private _leafClusters: LeafCluster<T>[] | undefined;
 
     public constructor(id: number, leftChild: AbstractCluster<T>, rightChild: AbstractCluster<T>, distance: number) {
         super(id);
@@ -16,24 +15,10 @@ export class MergedCluster<T> extends AbstractCluster<T> {
         this.distance = distance;
     }
 
-    public clusterElementIds(): number[] {
-        if (!this._clusterElementIds) {
-            this._clusterElementIds = this.leftChild.clusterElementIds().concat(this.rightChild.clusterElementIds());
+    public leafClusters(): LeafCluster<T>[] {
+        if (!this._leafClusters) {
+            this._leafClusters = this.leftChild.leafClusters().concat(this.rightChild.leafClusters());
         }
-        return this._clusterElementIds;
-    }
-
-    public clusterElements(): T[] {
-        if (!this._clusterElements) {
-            this._clusterElements = this.leftChild.clusterElements().concat(this.rightChild.clusterElements());
-        }
-        return this._clusterElements;
-    }
-
-    public size(): number {
-        if (!this._size) {
-            this._size = this.leftChild.size() + this.rightChild.size();
-        }
-        return this._size;
+        return this._leafClusters;
     }
 }

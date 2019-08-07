@@ -32,13 +32,13 @@ export class HierarchicalClustering<T> {
             );
 
             // Calculate and store distances to the merged cluster
-            this.clusters.forEach(cluster => {
+            for (const cluster of this.clusters) {
                 this.linkageValues.push({
                     c1: cluster,
                     c2: merged,
                     value: this.linkage.calculate(cluster, merged),
                 });
-            });
+            }
             this.clusters.push(merged);
         }
         return this.clusters[0];

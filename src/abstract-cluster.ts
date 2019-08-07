@@ -1,3 +1,5 @@
+import { LeafCluster } from './leaf-cluster';
+
 export abstract class AbstractCluster<T> {
     public id: number;
 
@@ -5,9 +7,17 @@ export abstract class AbstractCluster<T> {
         this.id = id;
     }
 
-    public abstract clusterElementIds(): number[];
+    public abstract leafClusters(): LeafCluster<T>[];
 
-    public abstract clusterElements(): T[];
+    public clusterElementIds(): number[] {
+        return this.leafClusters().map(e => e.id);
+    }
 
-    public abstract size(): number;
+    public clusterElements(): T[] {
+        return this.leafClusters().map(e => e.object);
+    }
+
+    public size(): number {
+        return this.leafClusters().length;
+    }
 }
