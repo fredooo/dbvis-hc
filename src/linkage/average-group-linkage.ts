@@ -8,8 +8,9 @@ export class AverageGroupLinkage<T> extends AbstractLinkage<T> {
 
     public calculate(c1: AbstractCluster<T>, c2: AbstractCluster<T>): number {
         let sum = 0;
-        for (const e1 of c1.clusterElements()) {
-            for (const e2 of c2.clusterElements()) {
+        const all = c1.clusterElements().concat(c2.clusterElements());
+        for (const e1 of all) {
+            for (const e2 of all) {
                 sum += this.distanceFunc(e1, e2);
             }
         }
