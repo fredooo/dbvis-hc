@@ -10,6 +10,10 @@ All notable changes to this project will be documented in this file.
 - Fixed
 - Security
 
+## [v1.0.6] (2019-08-11)
+### Removed
+- Removed `codecov` from dependencies
+
 ## [v1.0.5] (2019-08-11)
 ### Fixed
 - Average-Group-Linkage
