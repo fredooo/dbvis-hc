@@ -7,7 +7,7 @@ export class HierarchicalClustering<T> {
     private objects: T[];
     private linkage: AbstractLinkage<T>;
     private clusterFactory: ClusterFactory<T>;
-    private linkageValues: { c1: AbstractCluster<T>; c2: AbstractCluster<T>; value: number }[];
+    private linkageValues: { c1: AbstractCluster<T>; c2: AbstractCluster<T>; distance: number }[];
 
     public constructor(objects: T[], linkage: AbstractLinkage<T>) {
         this.clusterFactory = new ClusterFactory();
@@ -21,14 +21,14 @@ export class HierarchicalClustering<T> {
     public cluster(): AbstractCluster<T> {
         while (this.clusters.length > 1) {
             // Merge cluster with lowest distance
-            this.linkageValues.sort((e1, e2) => e1.value - e2.value);
-            const { c1, c2, value } = this.linkageValues[0];
+            this.linkageValues.sort((e1, e2) => e1.distance - e2.distance);
+            const { c1, c2, distance: value } = this.linkageValues[0];
             const merged = this.clusterFactory.createMergedCluster(c1, c2, value);
 
             // Remove merged cluster from the cluster and linkage values list
-            this.clusters = this.clusters.filter(e => !(e.id === c1.id || e.id === c2.id));
+            this.clusters = this.clusters.filter(e => e.id !== c1.id && e.id !== c2.id);
             this.linkageValues = this.linkageValues.filter(
-                e => !(e.c1.id === c1.id || e.c1.id === c2.id || e.c2.id === c1.id || e.c2.id === c2.id)
+                e => e.c1.id !== c1.id && e.c1.id !== c2.id && e.c2.id !== c1.id && e.c2.id !== c2.id
             );
 
             // Calculate and store distances to the merged cluster
@@ -36,7 +36,7 @@ export class HierarchicalClustering<T> {
                 this.linkageValues.push({
                     c1: cluster,
                     c2: merged,
-                    value: this.linkage.calculate(cluster, merged),
+                    distance: this.linkage.calculate(cluster, merged),
                 });
             }
             this.clusters.push(merged);
@@ -49,8 +49,8 @@ export class HierarchicalClustering<T> {
             for (let j = i + 1; j < this.clusters.length; j++) {
                 const c1 = this.clusters[i];
                 const c2 = this.clusters[j];
-                const value = this.linkage.calculate(c1, c2);
-                this.linkageValues.push({ c1, c2, value });
+                const distance = this.linkage.calculate(c1, c2);
+                this.linkageValues.push({ c1, c2, distance });
             }
         }
     }
