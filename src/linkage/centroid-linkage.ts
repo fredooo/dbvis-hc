@@ -14,12 +14,4 @@ export class CentroidLinkage<T> extends AbstractLinkage<T> {
         const centroid2 = this.aggregationFunc(c2.clusterElements());
         return this.distanceFunc(centroid1, centroid2);
     }
-
-    public static numberArrayAggregatonFunc(v: number[][]): number[] {
-        const a = [...v[0]];
-        for (let i = 1; i < v.length; i++) {
-            v[i].forEach((e, j) => a[j] + e);
-        }
-        return a.map(e => e / v.length);
-    }
 }
