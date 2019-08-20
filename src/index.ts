@@ -1,4 +1,7 @@
 export * from './hierarchical-clustering';
+export * from './abstract-cluster';
+export * from './leaf-cluster';
+export * from './merged-cluster';
 export * from './dendrogram';
 export * from './linkage/abstract-linkage';
 export * from './linkage/average-linkage';

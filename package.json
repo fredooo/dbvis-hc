@@ -1,6 +1,6 @@
 {
   "name": "dbvis-hc",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A TypeScript implementation of AGNES, an agglomerative hierarchical clustering algorithm",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
