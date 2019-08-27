@@ -1,6 +1,6 @@
 {
   "name": "dbvis-hc",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A TypeScript implementation of AGNES, an agglomerative hierarchical clustering algorithm",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -32,7 +32,7 @@
     "@types/jest": "^24.0.18",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
-    "eslint": "^6.2.1",
+    "eslint": "^6.2.2",
     "eslint-config-prettier": "^6.1.0",
     "eslint-plugin-prettier": "^3.1.0",
     "jest": "^24.9.0",

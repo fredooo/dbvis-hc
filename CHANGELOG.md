@@ -10,6 +10,14 @@ All notable changes to this project will be documented in this file.
 - Fixed
 - Security
 
+## [v1.0.8] (2019-08-27)
+### Security
+- Updated `eslint-utils`
+
+## [v1.0.7] (2019-08-20)
+### Changed
+- Exposed classes `AbstractCluster`, `LeafCluster`, and `MergedCluster` 
+
 ## [v1.0.6] (2019-08-11)
 ### Removed
 - Removed `codecov` from dependencies
