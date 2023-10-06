@@ -1,6 +1,7 @@
-node_modules
-dist
+node_modules/
+dist/
 coverage
 dbvis-hc-*.tgz
 
-.vscode
+.vscode/
+.idea/
