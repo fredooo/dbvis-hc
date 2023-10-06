@@ -1,7 +1,7 @@
 dbvis-hc
 ========
 
-[![npm version](https://badge.fury.io/js/dbvis-hc.svg)](https://badge.fury.io/js/dbvis-hc) [![Build Status](https://travis-ci.org/fredooo/dbvis-hc.svg?branch=master)](https://travis-ci.org/fredooo/dbvis-hc) [![codecov](https://codecov.io/gh/fredooo/dbvis-hc/branch/master/graph/badge.svg)](https://codecov.io/gh/fredooo/dbvis-hc) [![dependencies Status](https://david-dm.org/fredooo/dbvis-hc/status.svg)](https://david-dm.org/fredooo/dbvis-hc) [![devDependencies Status](https://david-dm.org/fredooo/dbvis-hc/dev-status.svg)](https://david-dm.org/fredooo/dbvis-hc?type=dev) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm version](https://badge.fury.io/js/dbvis-hc.svg)](https://badge.fury.io/js/dbvis-hc) [![build status](https://travis-ci.org/fredooo/dbvis-hc.svg?branch=master)](https://travis-ci.org/fredooo/dbvis-hc) [![dependencies status](https://img.shields.io/librariesio/github/fredooo/dbvis-hc)](https://shields.io) [![codecov](https://codecov.io/gh/fredooo/dbvis-hc/branch/master/graph/badge.svg)](https://codecov.io/gh/fredooo/dbvis-hc) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A TypeScript implementation of [AGNES][1], an agglomerative hierarchical clustering algorithm.
 
@@ -13,7 +13,7 @@ Install with `npm`:
 npm install --save dbvis-hc
 ```
 
-This package requires module resolution by Node in `tsconfig.json`:
+This package may require module resolution by Node in `tsconfig.json`:
 
 ```json
 {
@@ -55,7 +55,9 @@ This package provides common linkage strategies:
 * Average-Linkage
 * Average-Group-Linkage
 * Centroid-Linkage
+* [Ward-Linkage][2]
 
 You can provide your own linkage method by subtyping the `AbstractLinkage` class.
 
-[1]: https://onlinelibrary.wiley.com/doi/abs/10.1002/9780470316801.ch5 
+[1]: https://onlinelibrary.wiley.com/doi/abs/10.1002/9780470316801.ch5
+[2]: https://www.tandfonline.com/doi/abs/10.1080/01621459.1963.10500845
