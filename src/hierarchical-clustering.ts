@@ -1,6 +1,7 @@
 import { AbstractCluster } from './abstract-cluster';
 import { ClusterFactory } from './cluster-factory';
 import { AbstractLinkage } from './linkage/abstract-linkage';
+import { LeafCluster } from './leaf-cluster';
 
 export class HierarchicalClustering<T> {
     private clusters: AbstractCluster<T>[];
@@ -13,7 +14,7 @@ export class HierarchicalClustering<T> {
         this.clusterFactory = new ClusterFactory();
         this.objects = objects;
         this.linkage = linkage;
-        this.clusters = this.objects.map(e => this.clusterFactory.createLeafCluster(e));
+        this.clusters = this.objects.map((e): LeafCluster<T> => this.clusterFactory.createLeafCluster(e));
         this.linkageValues = [];
         this.initializeLinkageValues();
     }
@@ -21,13 +22,13 @@ export class HierarchicalClustering<T> {
     public cluster(): AbstractCluster<T> {
         while (this.clusters.length > 1) {
             // Merge cluster with lowest distance
-            this.linkageValues.sort((e1, e2) => e1.distance - e2.distance);
+            this.linkageValues.sort((e1, e2): number => e1.distance - e2.distance);
             const { c1, c2, distance: value } = this.linkageValues[0];
             const merged = this.clusterFactory.createMergedCluster(c1, c2, value);
             // Remove merged cluster from the cluster and linkage values list
-            this.clusters = this.clusters.filter(e => e.id !== c1.id && e.id !== c2.id);
+            this.clusters = this.clusters.filter((e): boolean => e.id !== c1.id && e.id !== c2.id);
             this.linkageValues = this.linkageValues.filter(
-                e => e.c1.id !== c1.id && e.c1.id !== c2.id && e.c2.id !== c1.id && e.c2.id !== c2.id
+                (e): boolean => e.c1.id !== c1.id && e.c1.id !== c2.id && e.c2.id !== c1.id && e.c2.id !== c2.id
             );
             // Calculate and store distances to the merged cluster
             for (const cluster of this.clusters) {

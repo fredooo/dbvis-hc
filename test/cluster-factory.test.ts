@@ -1,6 +1,6 @@
 import { ClusterFactory } from '../src/cluster-factory';
 
-test('id counter', () => {
+test('id counter', (): void => {
     const cf = new ClusterFactory<number>();
     const l1 = cf.createLeafCluster(99);
     expect(l1.id).toBe(0);

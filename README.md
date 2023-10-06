@@ -13,16 +13,6 @@ Install with `npm`:
 npm install --save dbvis-hc
 ```
 
-This package may require module resolution by Node in `tsconfig.json`:
-
-```json
-{
-    "compilerOptions": {
-        "moduleResolution": "node"
-    }   
-}
-```
-
 ### Usage
 
 This implementation can be used to cluster generic objects, given a useful definition of distance and in case of the Centroid-Linkage, additionally a definition for aggregation.

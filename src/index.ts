@@ -9,3 +9,4 @@ export * from './linkage/average-group-linkage';
 export * from './linkage/centroid-linkage';
 export * from './linkage/complete-linkage';
 export * from './linkage/single-linkage';
+export * from './linkage/ward-linkage';
